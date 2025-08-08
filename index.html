@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>求人検索アプリ - ツール開発案件特化</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 ツール開発案件検索</h1>
+            <p>VBA、JavaScript、自動化ツール開発案件を簡単検索</p>
+        </header>
+
+        <div class="search-form">
+            <h2>検索条件</h2>
+            <div class="form-group">
+                <label for="keyword">キーワード</label>
+                <input type="text" id="keyword" value="VBAツール作成" placeholder="例：VBAツール作成">
+            </div>
+            <div class="form-group">
+                <label for="minPrice">最低単価（円）</label>
+                <input type="number" id="minPrice" value="600000" placeholder="例：600000">
+            </div>
+            <div class="form-group">
+                <label for="workStyle">勤務形態</label>
+                <select id="workStyle">
+                    <option value="フルリモート" selected>フルリモート</option>
+                    <option value="一部リモート">一部リモート</option>
+                    <option value="常駐">常駐</option>
+                </select>
+            </div>
+            <button onclick="searchJobs()" class="search-btn">検索</button>
+            <button onclick="resetSearch()" class="reset-btn">リセット</button>
+        </div>
+
+        <div class="filter-section">
+            <h3>並び替え</h3>
+            <select id="sortBy" onchange="sortResults()">
+                <option value="price-desc">単価（高い順）</option>
+                <option value="price-asc">単価（低い順）</option>
+                <option value="date-desc">新着順</option>
+            </select>
+        </div>
+
+        <div id="results" class="results-container">
+            <p class="loading">検索ボタンをクリックして案件を表示してください</p>
+        </div>
+
+        <footer>
+            <p>© 2025 求人検索アプリ | ツール開発案件特化版</p>
+        </footer>
+    </div>
+
+    <!-- Firebase設定（テンプレートルールに従って正確にコピペ） -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="feedback-system.js"></script>
+    <script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyA5PXKChizYDCXF_GJ4KL6Ylq9K5hCPXWE",
+        authDomain: "shares-b1b97.firebaseapp.com",
+        databaseURL: "https://shares-b1b97-default-rtdb.firebaseio.com",
+        projectId: "shares-b1b97",
+        storageBucket: "shares-b1b97.firebasestorage.app",
+        messagingSenderId: "38311063248",
+        appId: "1:38311063248:web:0d2d5726d12b305b24b8d5"
+    };
+    firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <!-- アプリケーションのJavaScript -->
+    <script src="job-search.js"></script>
+</body>
+</html>
